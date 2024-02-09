@@ -57,10 +57,10 @@ def hint_show():
     global hint_flag
     if hint_flag:
         hint_flag = False
+        screen.fill(background_color)
+
     else:
         hint_flag = True
-        screen.fill(background_color)
-        Button(1500, 30, 80, 80, screen, '?', hint_show)
 
 
 if __name__ == '__main__':
@@ -78,12 +78,23 @@ if __name__ == '__main__':
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_z:
+                    print('0lad6struna')
+                if event.key == pygame.K_d:
+                    print('2lad5struna')
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_z:
+                    print('stop')
+                if event.key == pygame.K_d:
+                    print('stop')
 
         for button in buttons_group:
             button.process()
         if hint_flag:
             hint_window = pygame.Surface((1200, 800))
             hint_window.fill('white')
+            pygame.draw.rect(hint_window, "red", (500, 400, 50, 50))
             screen.blit(hint_window, (200, 100))
 
 
