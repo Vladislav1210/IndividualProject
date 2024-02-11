@@ -1,5 +1,6 @@
 import pygame
 import sys
+from pygame.mixer import Sound
 
 size = width, height = 1600, 1000
 background_color = (220, 255, 255)
@@ -72,22 +73,159 @@ if __name__ == '__main__':
     pygame.display.set_caption('Guitar training simulator')
     screen.fill(background_color)
     Button(1500, 30, 80, 80, screen, '?', hint_show)
+    # common
+    sound = {'z': Sound(''), 'a': Sound(''), 'q': Sound(''),
+             'x': Sound(''), 's': Sound(''), 'w': Sound(''),
+             'c': Sound(''), 'd': Sound(''), 'e': Sound(''),
+             'v': Sound(''), 'f': Sound(''), 'r': Sound(''),
+             'b': Sound(''), 'g': Sound(''), 't': Sound(''),
+             'n': Sound(''), 'h': Sound(''), 'y': Sound(''),
+             'm': Sound(''), 'j': Sound(''), 'u': Sound(''),
+             ',': Sound(''), 'k': Sound(''), 'i': Sound(''),
+             '.': Sound(''), 'l': Sound(''), 'o': Sound('')
+             }
+    # palm_mute
+    sound_pm = {'z': Sound(''), 'a': Sound(''), 'q': Sound(''),
+                'x': Sound(''), 's': Sound(''), 'w': Sound(''),
+                'c': Sound(''), 'd': Sound(''), 'e': Sound(''),
+                'v': Sound(''), 'f': Sound(''), 'r': Sound(''),
+                'b': Sound(''), 'g': Sound(''), 't': Sound(''),
+                'n': Sound(''), 'h': Sound(''), 'y': Sound(''),
+                'm': Sound(''), 'j': Sound(''), 'u': Sound(''),
+                ',': Sound(''), 'k': Sound(''), 'i': Sound(''),
+                '.': Sound(''), 'l': Sound(''), 'o': Sound('')
+                }
 
     while True:
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
+
             if event.type == pygame.KEYDOWN:
+                # 6 string
                 if event.key == pygame.K_z:
-                    print('0lad6struna')
+                    sound['z'].play()
+                if event.key == pygame.K_x:
+                    sound['x'].play()
+                if event.key == pygame.K_c:
+                    sound['c'].play()
+                if event.key == pygame.K_v:
+                    sound['v'].play()
+                if event.key == pygame.K_b:
+                    sound['b'].play()
+                if event.key == pygame.K_n:
+                    sound['n'].play()
+                if event.key == pygame.K_m:
+                    sound['m'].play()
+                if event.key == pygame.K_COMMA:
+                    sound[','].play()
+                if event.key == pygame.K_PERIOD:
+                    sound['.'].play()
+                # 5 string
+                if event.key == pygame.K_a:
+                    sound['a'].play()
+                if event.key == pygame.K_s:
+                    sound['s'].play()
                 if event.key == pygame.K_d:
-                    print('2lad5struna')
+                    sound['d'].play()
+                if event.key == pygame.K_f:
+                    sound['f'].play()
+                if event.key == pygame.K_g:
+                    sound['g'].play()
+                if event.key == pygame.K_h:
+                    sound['h'].play()
+                if event.key == pygame.K_j:
+                    sound['j'].play()
+                if event.key == pygame.K_k:
+                    sound['k'].play()
+                if event.key == pygame.K_l:
+                    sound['l'].play()
+                # 4 string
+                if event.key == pygame.K_q:
+                    sound['q'].play()
+                if event.key == pygame.K_w:
+                    sound['w'].play()
+                if event.key == pygame.K_e:
+                    sound['e'].play()
+                if event.key == pygame.K_r:
+                    sound['r'].play()
+                if event.key == pygame.K_t:
+                    sound['t'].play()
+                if event.key == pygame.K_y:
+                    sound['y'].play()
+                if event.key == pygame.K_u:
+                    sound['u'].play()
+                if event.key == pygame.K_i:
+                    sound['i'].play()
+                if event.key == pygame.K_o:
+                    sound['o'].play()
+
             if event.type == pygame.KEYUP:
+                # 6 string
                 if event.key == pygame.K_z:
-                    print('stop')
+                    sound['z'].stop()
+                if event.key == pygame.K_x:
+                    sound['x'].stop()
+                if event.key == pygame.K_c:
+                    sound['c'].stop()
+                if event.key == pygame.K_v:
+                    sound['v'].stop()
+                if event.key == pygame.K_b:
+                    sound['b'].stop()
+                if event.key == pygame.K_n:
+                    sound['n'].stop()
+                if event.key == pygame.K_m:
+                    sound['m'].stop()
+                if event.key == pygame.K_COMMA:
+                    sound[','].stop()
+                if event.key == pygame.K_PERIOD:
+                    sound['.'].stop()
+                # 5 string
+                if event.key == pygame.K_a:
+                    sound['a'].stop()
+                if event.key == pygame.K_s:
+                    sound['s'].stop()
                 if event.key == pygame.K_d:
-                    print('stop')
+                    sound['d'].stop()
+                if event.key == pygame.K_f:
+                    sound['f'].stop()
+                if event.key == pygame.K_g:
+                    sound['g'].stop()
+                if event.key == pygame.K_h:
+                    sound['h'].stop()
+                if event.key == pygame.K_j:
+                    sound['j'].stop()
+                if event.key == pygame.K_k:
+                    sound['k'].stop()
+                if event.key == pygame.K_l:
+                    sound['l'].stop()
+                # 4 string
+                if event.key == pygame.K_q:
+                    sound['q'].stop()
+                if event.key == pygame.K_w:
+                    sound['w'].stop()
+                if event.key == pygame.K_e:
+                    sound['e'].stop()
+                if event.key == pygame.K_r:
+                    sound['r'].stop()
+                if event.key == pygame.K_t:
+                    sound['t'].stop()
+                if event.key == pygame.K_y:
+                    sound['y'].stop()
+                if event.key == pygame.K_u:
+                    sound['u'].stop()
+                if event.key == pygame.K_i:
+                    sound['i'].stop()
+                if event.key == pygame.K_o:
+                    sound['o'].stop()
+
+            if event.type == pygame.KEYDOWN and event.key == pygame.KMOD_SHIFT:
+                if event.key == pygame.K_z:
+                    sound['z'].play()
+            if event.type == pygame.KEYUP and event.key == pygame.KMOD_SHIFT:
+                if event.key == pygame.K_z:
+                    sound['z'].stop()
 
         for button in buttons_group:
             button.process()
