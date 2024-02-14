@@ -71,8 +71,7 @@ if __name__ == '__main__':
     font = pygame.font.Font(None, 30)
     font2 = pygame.font.Font(None, 100)
 
-    image = pygame.image.load('tinker.jpg')
-    image_rect = image.get_rect(bottomright=(1000, 500))
+
 
     screen = pygame.display.set_mode(size)
 
@@ -83,19 +82,19 @@ if __name__ == '__main__':
     description = font2.render(description_text, True, (100, 100, 100))
     screen.blit(description, (100, 30))
     # common
-    '''sound = {'a': Sound(''), 'q': Sound(''), '1': Sound(''),
-             's': Sound(''), 'w': Sound(''), '2': Sound(''),
-             'd': Sound(''), 'e': Sound(''), '3': Sound(''),
-             'f': Sound(''), 'r': Sound(''), '4': Sound(''),
-             'g': Sound(''), 't': Sound(''), '5': Sound(''),
-             'h': Sound(''), 'y': Sound(''), '6': Sound(''),
-             'j': Sound(''), 'u': Sound(''), '7': Sound(''),
-             'k': Sound(''), 'i': Sound(''), '8': Sound(''),
-             'l': Sound(''), 'o': Sound(''), '9': Sound(''),
-             ';': Sound(''), 'p': Sound(''), '0': Sound('')
+    sound = {'a': Sound('sound/0.6.wav'), 'q': Sound('sound/0.5.wav'), '1': Sound('sound/0.4.wav'),
+             's': Sound('sound/1.6.wav'), 'w': Sound('sound/1.5.wav'), '2': Sound('sound/1.4.wav'),
+             'd': Sound('sound/2.6.wav'), 'e': Sound('sound/2.5.wav'), '3': Sound('sound/2.4.wav'),
+             'f': Sound('sound/3.6.wav'), 'r': Sound('sound/3.5.wav'), '4': Sound('sound/3.4.wav'),
+             'g': Sound('sound/4.6.wav'), 't': Sound('sound/4.5.wav'), '5': Sound('sound/4.4.wav'),
+             'h': Sound('sound/5.6.wav'), 'y': Sound('sound/5.5.wav'), '6': Sound('sound/5.4.wav'),
+             'j': Sound('sound/6.6.wav'), 'u': Sound('sound/6.5.wav'), '7': Sound('sound/6.4.wav'),
+             'k': Sound('sound/7.6.wav'), 'i': Sound('sound/7.5.wav'), '8': Sound('sound/7.4.wav'),
+             'l': Sound('sound/8.6.wav'), 'o': Sound('sound/8.5.wav'), '9': Sound('sound/8.4.wav'),
+             ';': Sound('sound/9.6.wav'), 'p': Sound('sound/9.5.wav'), '0': Sound('sound/9.4.wav')
              }
     # palm_mute
-    sound_pm = {'a': Sound(''), 'q': Sound(''), '1': Sound(''),
+    '''sound_pm = {'a': Sound(''), 'q': Sound(''), '1': Sound(''),
                 's': Sound(''), 'w': Sound(''), '2': Sound(''),
                 'd': Sound(''), 'e': Sound(''), '3': Sound(''),
                 'f': Sound(''), 'r': Sound(''), '4': Sound(''),
@@ -106,9 +105,11 @@ if __name__ == '__main__':
                 'l': Sound(''), 'o': Sound(''), '9': Sound(''),
                 ';': Sound(''), 'p': Sound(''), '0': Sound('')
                 }'''
-    sound = {'a': Sound('1.wav.mp3')}
-    sound_pm = {'a': Sound('2.wav')}
 
+    sound_pm = {'a': Sound('pm_sound/0.6pm.wav'), 's': Sound('pm_sound/1.6pm.wav'), 'd': Sound('pm_sound/2.6pm.wav'),
+                'f': Sound('pm_sound/3.6pm.wav'), 'g': Sound('pm_sound/4.6pm.wav'), 'h': Sound('pm_sound/5.6pm.wav'),
+                'j': Sound('pm_sound/6.6pm.wav'), 'k': Sound('pm_sound/7.6pm.wav'), 'l': Sound('pm_sound/8.6pm.wav'),
+                ';': Sound('pm_sound/9.6pm.wav')}
     while True:
         pygame.display.flip()
         screen.blit(description, (100, 30))
@@ -323,9 +324,7 @@ if __name__ == '__main__':
                 if event.key == pygame.K_0:
                     sound['0'].stop()
 
-            if event.type == pygame.KEYUP and mods & pygame.KMOD_SHIFT:
-                if event.key == pygame.K_a:
-                    sound_pm['a'].stop()
+
 
 
 
