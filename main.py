@@ -1,6 +1,12 @@
+import io
+
 import pygame
 import sys
+
+from PyQt5 import uic
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from pygame.mixer import Sound
+
 
 size = width, height = 1600, 1000
 background_color = (220, 255, 255)
@@ -8,6 +14,12 @@ hint_flag = False
 description_text = 'Симулятор тренировки игры на гитаре'
 
 buttons_group = []
+
+
+class Window1(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('untitled.ui', self)
 
 
 class Button():
@@ -65,13 +77,18 @@ def hint_show():
         hint_flag = True
 
 
+def song_show():
+    app = QApplication(sys.argv)
+    ex = Window1()
+    ex.show()
+    sys.exit(app.exec())
+
+
 if __name__ == '__main__':
     pygame.init()
 
     font = pygame.font.Font(None, 30)
     font2 = pygame.font.Font(None, 100)
-
-
 
     screen = pygame.display.set_mode(size)
 
@@ -79,6 +96,7 @@ if __name__ == '__main__':
     screen.fill(background_color)
 
     Button(1500, 30, 80, 80, screen, '?', hint_show)
+    Button(400, 500, 130, 60, screen, 'песня', song_show)
     description = font2.render(description_text, True, (100, 100, 100))
     screen.blit(description, (100, 30))
     # common
