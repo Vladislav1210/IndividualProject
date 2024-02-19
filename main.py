@@ -5,21 +5,15 @@ import sys
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5.QtGui import QPixmap
 from pygame.mixer import Sound
 
 
 size = width, height = 1600, 1000
 background_color = (220, 255, 255)
-hint_flag = False
-description_text = 'Симулятор тренировки игры на гитаре'
+
 
 buttons_group = []
-
-
-class Window1(QMainWindow):
-    def __init__(self):
-        super().__init__()
-        uic.loadUi('untitled.ui', self)
 
 
 class Button():
@@ -38,7 +32,7 @@ class Button():
             'hover': '#666666',
             'pressed': '#333333',
         }
-
+        font = pygame.font.Font(None, 30)
         self.buttonSurface = pygame.Surface((self.width, self.height))
         self.buttonRect = pygame.Rect(self.x, self.y, self.width, self.height)
 
@@ -67,38 +61,63 @@ class Button():
         self.surface_pos.blit(self.buttonSurface, self.buttonRect)
 
 
-def hint_show():
-    global hint_flag
-    if hint_flag:
-        hint_flag = False
-        screen.fill(background_color)
-        screen.blit(description, (100, 30))
-    else:
-        hint_flag = True
+def dpass():
+    pass
 
 
-def song_show():
+def retrn():
+    pygame.quit()
     app = QApplication(sys.argv)
-    ex = Window1()
+    ex = MainMenu()
     ex.show()
     sys.exit(app.exec())
 
 
-if __name__ == '__main__':
+def play_fragment():
+    pass
+
+
+def enter_sandman():
+
     pygame.init()
 
-    font = pygame.font.Font(None, 30)
     font2 = pygame.font.Font(None, 100)
+    font3 = pygame.font.Font(None, 70)
 
     screen = pygame.display.set_mode(size)
 
-    pygame.display.set_caption('Guitar training simulator')
-    screen.fill(background_color)
+    pygame.display.set_caption('Enter Sandman')
+    screen.fill('white')
 
-    Button(1500, 30, 80, 80, screen, '?', hint_show)
-    Button(400, 500, 130, 60, screen, 'песня', song_show)
-    description = font2.render(description_text, True, (100, 100, 100))
-    screen.blit(description, (100, 30))
+    Button(1500, 20, 80, 80, screen, onclickFunction=retrn, buttonText='X', button_color='red')
+    Button(10, 155, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 395, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 630, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 870, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+
+    description = font2.render('Enter Sandman', True, (50, 50, 50))
+    x4 = font3.render('x4', True, (50, 50, 50))
+    x3 = font3.render('x3', True, (50, 50, 50))
+    x7 = font3.render('x7', True, (50, 50, 50))
+    screen.blit(description, (100, 10))
+
+    es1 = pygame.image.load('pict/enter_sandman1.png')
+    es2 = pygame.image.load('pict/enter_sandman2.png')
+    es3 = pygame.image.load('pict/enter_sandman3.png')
+    es35 = pygame.image.load('pict/enter_sandman3.5.png')
+    es4 = pygame.image.load('pict/enter_sandman4.png')
+    es5 = pygame.image.load('pict/enter_sandman5.png')
+    screen.blit(es1, (70, 70))
+    screen.blit(es2, (70, 302))
+    screen.blit(es3, (70, 540))
+    screen.blit(es35, (765, 540))
+    screen.blit(es4, (70, 757))
+    screen.blit(es5, (600, 755))
+
+    screen.blit(x4, (750, 170))
+    screen.blit(x4, (750, 400))
+    screen.blit(x7, (730, 635))
+    screen.blit(x3, (580, 860))
     # common
     sound = {'a': Sound('sound/0.6.wav'), 'q': Sound('sound/0.5.wav'), '1': Sound('sound/0.4.wav'),
              's': Sound('sound/1.6.wav'), 'w': Sound('sound/1.5.wav'), '2': Sound('sound/1.4.wav'),
@@ -130,19 +149,12 @@ if __name__ == '__main__':
                 ';': Sound('pm_sound/9.6pm.wav')}
     while True:
         pygame.display.flip()
-        screen.blit(description, (100, 30))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
 
             for button in buttons_group:
                 button.process()
-            if hint_flag:
-                hint_window = pygame.Surface((1200, 800))
-                hint_window.fill('white')
-                pygame.draw.rect(hint_window, "red", (500, 400, 50, 50))
-                screen.blit(hint_window, (200, 100))
-                hint_window.blit(image, (100, 20))
 
             mods = pygame.key.get_mods()
 
@@ -341,6 +353,46 @@ if __name__ == '__main__':
                     sound['9'].stop()
                 if event.key == pygame.K_0:
                     sound['0'].stop()
+
+
+class MainMenu(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('MainMenu.ui', self)
+        self.setFixedSize(*size)
+        self.enter_sandman_song.clicked.connect(enter_sandman)
+        self.hint_button.clicked.connect(self.hint_show)
+
+    def hint_show(self):
+        self.hw = HintWindow()
+        self.setCentralWidget(self.hw)
+        self.hw.show()
+        self.mm = MainMenu()
+        self.mm.setVisible(False)
+
+
+class HintWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        uic.loadUi('HintWindow.ui', self)
+        self.setFixedSize(*size)
+        self.exit_button.clicked.connect(self.exit)
+        self.pict2.setPixmap(QPixmap('pict/hint_pict1.png'))
+        self.pict1.setPixmap(QPixmap('pict/grif_gitari.png'))
+
+    def exit(self):
+        self.mm = MainMenu()
+        self.setCentralWidget(self.mm)
+        self.mm.show()
+        self.hw = HintWindow()
+        self.hw.setVisible(False)
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    ex = MainMenu()
+    ex.show()
+    sys.exit(app.exec())
 
 
 
