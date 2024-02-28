@@ -132,7 +132,7 @@ background-color: rgb(255, 255, 255);</string>
      <string>Enter Sandman</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="master_of_puppets_song">
+   <widget class="QPushButton" name="holier_than_thou_song">
     <property name="geometry">
      <rect>
       <x>1060</x>
@@ -146,7 +146,7 @@ background-color: rgb(255, 255, 255);</string>
 background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>Master of Puppets</string>
+     <string>Holier Than Thou</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
