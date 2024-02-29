@@ -1,5 +1,3 @@
-import io
-
 import pygame
 import sys
 
@@ -60,10 +58,6 @@ class Button():
 
 def retrn():
     sys.exit()
-
-
-def play_fragment():
-    pass
 
 
 def note(event, mods, sound, sound_pm):
@@ -264,6 +258,26 @@ def note(event, mods, sound, sound_pm):
             sound['0'].stop()
 
 
+def enter_sandman1_play():
+    enter_sandman1 = Sound('songs_fragment/enter_sandman1.wav')
+    enter_sandman1.play()
+
+
+def enter_sandman2_play():
+    enter_sandman2 = Sound('songs_fragment/enter_sandman2.wav')
+    enter_sandman2.play()
+
+
+def enter_sandman3_play():
+    enter_sandman3 = Sound('songs_fragment/enter_sandman3.wav')
+    enter_sandman3.play()
+
+
+def enter_sandman4_play():
+    enter_sandman4 = Sound('songs_fragment/enter_sandman4.wav')
+    enter_sandman4.play()
+
+
 def enter_sandman():
 
     pygame.init()
@@ -277,14 +291,14 @@ def enter_sandman():
     screen.fill('white')
 
     Button(1500, 20, 80, 80, screen, onclickFunction=retrn, buttonText='X', button_color='red')
-    Button(10, 155, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 395, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 630, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 870, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 155, 50, 50, screen, onclickFunction=enter_sandman1_play, buttonText='|>', button_color='grey')
+    Button(10, 395, 50, 50, screen, onclickFunction=enter_sandman2_play, buttonText='|>', button_color='grey')
+    Button(10, 630, 50, 50, screen, onclickFunction=enter_sandman3_play, buttonText='|>', button_color='grey')
+    Button(10, 870, 50, 50, screen, onclickFunction=enter_sandman4_play, buttonText='|>', button_color='grey')
 
     description = font2.render('Enter Sandman', True, (50, 50, 50))
     x4 = font3.render('x4', True, (50, 50, 50))
-    x3 = font3.render('x3', True, (50, 50, 50))
+    x2 = font3.render('x2', True, (50, 50, 50))
     x7 = font3.render('x7', True, (50, 50, 50))
     screen.blit(description, (100, 10))
 
@@ -304,7 +318,7 @@ def enter_sandman():
     screen.blit(x4, (750, 170))
     screen.blit(x4, (750, 400))
     screen.blit(x7, (730, 635))
-    screen.blit(x3, (580, 860))
+    screen.blit(x2, (580, 860))
     # common
     sound = {'a': Sound('sound/0.6.wav'), 'q': Sound('sound/0.5.wav'), '1': Sound('sound/0.4.wav'),
              's': Sound('sound/1.6.wav'), 'w': Sound('sound/1.5.wav'), '2': Sound('sound/1.4.wav'),
@@ -343,6 +357,16 @@ def enter_sandman():
             note(event, mods, sound, sound_pm)
 
 
+def du_hast1_play():
+    du_hast1 = Sound('songs_fragment/du_hast1.wav')
+    du_hast1.play()
+
+
+def du_hast2_play():
+    du_hast2 = Sound('songs_fragment/du_hast2.wav')
+    du_hast2.play()
+
+
 def du_hast():
     pygame.init()
 
@@ -355,8 +379,8 @@ def du_hast():
     screen.fill('white')
 
     Button(1500, 20, 80, 80, screen, onclickFunction=retrn, buttonText='X', button_color='red')
-    Button(10, 355, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 595, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 355, 50, 50, screen, onclickFunction=du_hast1_play, buttonText='|>', button_color='grey')
+    Button(10, 595, 50, 50, screen, onclickFunction=du_hast2_play, buttonText='|>', button_color='grey')
 
     description = font2.render('Du Hast', True, (50, 50, 50))
 
@@ -408,6 +432,21 @@ def du_hast():
             note(event, mods, sound, sound_pm)
 
 
+def one1_play():
+    one1 = Sound('songs_fragment/one1.wav')
+    one1.play()
+
+
+def one2_play():
+    one2 = Sound('songs_fragment/one2.wav')
+    one2.play()
+
+
+def one3_play():
+    one3 = Sound('songs_fragment/one3.wav')
+    one3.play()
+
+
 def one():
 
     pygame.init()
@@ -421,9 +460,9 @@ def one():
     screen.fill('white')
 
     Button(1500, 20, 80, 80, screen, onclickFunction=retrn, buttonText='X', button_color='red')
-    Button(10, 155, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 395, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 635, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 155, 50, 50, screen, onclickFunction=one1_play, buttonText='|>', button_color='grey')
+    Button(10, 395, 50, 50, screen, onclickFunction=one2_play, buttonText='|>', button_color='grey')
+    Button(10, 635, 50, 50, screen, onclickFunction=one3_play, buttonText='|>', button_color='grey')
 
     description = font2.render('One', True, (50, 50, 50))
     x2 = font3.render('x2', True, (50, 50, 50))
@@ -479,6 +518,21 @@ def one():
             note(event, mods, sound, sound_pm)
 
 
+def holier_than_thou1_play():
+    holier_than_thou1 = Sound('songs_fragment/holier_than_thou1.wav')
+    holier_than_thou1.play()
+
+
+def holier_than_thou2_play():
+    holier_than_thou2 = Sound('songs_fragment/holier_than_thou2.wav')
+    holier_than_thou2.play()
+
+
+def holier_than_thou3_play():
+    holier_than_thou3 = Sound('songs_fragment/holier_than_thou3.wav')
+    holier_than_thou3.play()
+
+
 def holier_than_thou():
 
     pygame.init()
@@ -492,9 +546,9 @@ def holier_than_thou():
     screen.fill('white')
 
     Button(1500, 20, 80, 80, screen, onclickFunction=retrn, buttonText='X', button_color='red')
-    Button(10, 155, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 395, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
-    Button(10, 630, 50, 50, screen, onclickFunction=play_fragment, buttonText='|>', button_color='grey')
+    Button(10, 155, 50, 50, screen, onclickFunction=holier_than_thou1_play, buttonText='|>', button_color='grey')
+    Button(10, 395, 50, 50, screen, onclickFunction=holier_than_thou2_play, buttonText='|>', button_color='grey')
+    Button(10, 630, 50, 50, screen, onclickFunction=holier_than_thou3_play, buttonText='|>', button_color='grey')
 
     description = font2.render('Holier Than Thou', True, (50, 50, 50))
     x23 = font3.render('x23', True, (50, 50, 50))
@@ -567,9 +621,15 @@ def free_play():
     x = font3.render('Здесь можно свободно сыграть что угодно', True, (50, 50, 50))
     screen.blit(description, (100, 10))
 
+    sp_group = pygame.sprite.Group()
     es1 = pygame.image.load('pict/grif_gitari.png')
-
-    screen.blit(es1, (100, 300))
+    sprite = pygame.sprite.Sprite()
+    sprite.image = es1
+    sp_group.add(sprite)
+    sprite.rect = sprite.image.get_rect()
+    sprite.rect.x = 100
+    sprite.rect.y = 300
+    sp_group.draw(screen)
 
     screen.blit(x, (100, 700))
 

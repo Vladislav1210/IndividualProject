@@ -80,7 +80,7 @@ color: rgb(255, 255, 255);</string>
      <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
     </property>
     <property name="text">
-     <string>Если над табами написано P. M. (Palm mute), то следует играть из заглушенными, удерживая клавишу SHIFT.</string>
+     <string>Если над табами написано P. M. (Palm mute), то следует играть их заглушенными, удерживая клавишу SHIFT.</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
